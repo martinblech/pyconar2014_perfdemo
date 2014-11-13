@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}{% load i18n %}
+
+{% block title %}Comments{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    
+  <div class="row">
+    <div class="col-xs-12">
+      <h2>Comments</h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="list-group">
+          {% for comment in comment_list %}
+            <a href="#" class="list-group-item">
+              <h4 class="list-group-item-heading">{{ comment.body }}</h4>
+              <p class="list-group-item-text">{{ comment.author.username }}</p>
+              <p class="list-group-item-text">
+                <div class="btn-group btn-group-xs" role="group">
+                {% for tag in comment.tags.all %}
+                  <button type="button" class="btn btn-default">
+                    {{ tag.name }}
+                  </button>
+                {% endfor %}
+                </div>
+              </p>
+            </a>
+          {% endfor %}
+        
+      </div>
+    </div>
+  </div>
+
+</div>
+
+{% endblock content %}
