@@ -7,6 +7,10 @@ class Tag(models.Model):
     name = models.CharField(max_length=100)
 
 class Comment(models.Model):
-    body = models.CharField(max_length=250)
+    title = models.CharField(max_length=250)
+    body = models.TextField()
     author = models.ForeignKey(settings.AUTH_USER_MODEL)
     tags = models.ManyToManyField(Tag)
+
+    class Meta:
+        ordering = ['id']

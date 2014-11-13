@@ -14,14 +14,13 @@
   </div>
 
   <div class="row">
-    <div class="col-lg-12">
+    <div class="col-lg-8">
       <div class="list-group">
           {% for comment in comment_list %}
             <a href="#" class="list-group-item">
-              <h4 class="list-group-item-heading">{{ comment.body }}</h4>
-              <p class="list-group-item-text">{{ comment.author.username }}</p>
+              <h4 class="list-group-item-heading">{{ comment.title }}</h4>
               <p class="list-group-item-text">
-                <div class="btn-group btn-group-xs" role="group">
+                <div class="btn-group btn-group-xs pull-right" role="group">
                 {% for tag in comment.tags.all %}
                   <button type="button" class="btn btn-default">
                     {{ tag.name }}
@@ -29,9 +28,11 @@
                 {% endfor %}
                 </div>
               </p>
+              <p class="list-group-item-text">
+                by <em>{{ comment.author.username }}</em>
+              </p>
             </a>
           {% endfor %}
-        
       </div>
     </div>
   </div>
